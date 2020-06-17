@@ -1,3 +1,11 @@
+setup:
+  addons:
+    - plan: heroku-postgresql:hobby-dev
+      as: DATABASE
+    - plan: papertrail:choklad
+      as: PAPERTRAIL
+    - plan: rollbar:free
+      as: ROLLBAR
 build:
   docker:
     web: cms/Dockerfile

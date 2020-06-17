@@ -7,5 +7,5 @@ RUN mkdir ${APP_ROOT}
 WORKDIR ${APP_ROOT}
 ADD . ${APP_ROOT}
 
-RUN npm install
+RUN npm ci
 RUN npm run build
