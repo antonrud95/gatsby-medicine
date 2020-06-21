@@ -7,8 +7,7 @@ module.exports = ({ env }) => {
     const parsed = url.parse(env('DATABASE_URL', ''));
     const [username, password] = parsed.auth.split(':');
     const database = parsed.pathname.substr(1);
-
-    console.log(process.env.DATABASE_URL)
+    const ssl = parsed.query && parsed.query.ssl === 'true'
 
     settings = {
       host: parsed.hostname,
@@ -16,7 +15,7 @@ module.exports = ({ env }) => {
       database,
       username,
       password,
-      ssl: (parsed.query.ssl === 'true'),
+      ssl,
     }
   } else {
     settings = {
