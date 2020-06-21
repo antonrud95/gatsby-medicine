@@ -1,5 +1,6 @@
 require("dotenv").config()
 
+const path = require('path')
 const { CMS_URL } = process.env
 
 module.exports = {
@@ -16,6 +17,15 @@ module.exports = {
         name: `images`,
         path: `${__dirname}/src/images`,
       },
+    },
+    {
+      resolve: `gatsby-plugin-alias-imports`,
+      options: {
+        alias: {
+          "~": path.resolve(__dirname, 'src')
+        },
+        extensions: []
+      }
     },
     {
       resolve: `gatsby-source-strapi`,
