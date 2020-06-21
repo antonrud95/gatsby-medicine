@@ -2,7 +2,7 @@
 
 <img src="resource/logo.png" width="200px">
 
-This project is designed to simplify the lives of developers and reduce routine processes during setting up a project by automating them
+This project is designed to simplify the lives of developers and reduce routine processes during setting up a [Gatsby](https://www.gatsbyjs.org/) and [Strapi](https://strapi.io/) projects
 
 ---
 
@@ -54,7 +54,7 @@ $ npm i
 ```
 
 ## Development
-Before start development process make sure that you successfully completed [Instalation](#Installation) step
+Before start development process make sure that you successfully completed [Installation](#Installation) step
 
 In first let's create `.env` file in project root directory and copy content from `.env.example` file to it. You should do this operation in `cms` directory as long as in `frontend`.
 
@@ -63,11 +63,11 @@ For starting development process run following commands in your terminal
 __within Docker__
 
 ```bash
-# window one
+# window #1
 $ cd cms
 $ cd docker-compose up
 
-# window two
+# window #2
 $ cd frontend
 $ npm run develop
 ```
@@ -77,11 +77,8 @@ __without Docker__
 Before run CMS should make one extra step. Open `.env` file in `cms` directory and update next line:
 
 ```yml
-# [DATABASE]
-# Use with docker
 # DATABASE_HOST=postgres # old value
 
-# Use with localhost
 DATABASE_HOST=127.0.0.1 # new value
 ```
 
@@ -153,11 +150,79 @@ $ heroku stack:set container -a your_application
 
 <br/>
 
-Create S3 bucket
+### Config file upload:
+
+Navigate to AWS dashboard search for S3 service and click on __Create bucket__ bucket button
+
+1. Provide bucket name
+2. On __Set permissions__ step choose options from the screenshot belowe
+3. Create the buckent 
 
 <details>
   <summary>Example</summary>
-  <img src="./resource/heroku-3.png">
+  <img src="./resource/aws-1.png">
+  <img src="./resource/aws-2.png">
+  <img src="./resource/aws-3.png">
 </details>
+
+Create [`IAM`](https://aws.amazon.com/iam/) use for this bucket.
+
+Navigate to __IAM > Users > Add user__
+
+Provide User name and select __Programmatic access__
+<details>
+  <summary>Example</summary>
+  <img src="./resource/iam-1.png">
+</details>
+
+Go to the next step and select __Attach existing policies directly__ option. Then click on __Create policy__ button
+<details>
+  <summary>Example</summary>
+  <img src="./resource/iam-2.png">
+</details>
+
+In new window, choose S3 service and attach next actions.
+  1. __Read > GetObject__
+  2. __Read > GetObjectAcl__
+  3. __Read > GetObjectVersion__
+  4. __Read > GetObjectVersionAcl__
+  5. __Write > DeleteObject__
+  6. __Write > DeleteObjectVersion__
+  7. __Write > PutObject__
+  8. __Permissions management > PutObjectAcl__
+  9. __Permissions management > PutObjectVersionAcl__
+<details>
+  <summary>Example</summary>
+  <img src="./resource/iam-3.png">
+</details>
+
+In __Resources__ section provide S3 bucket name and allowe all objects via `*` symbol
+<details>
+  <summary>Example</summary>
+  <img src="./resource/iam-4.png">
+</details>
+
+Go to the next step and provide __Policy name__
+
+Return to the previous page and search for created Policy
+<details>
+  <summary>Example</summary>
+  <img src="./resource/iam-5.png">
+</details>
+
+Create new User and save credentials
+<details>
+  <summary>Example</summary>
+  <img src="./resource/iam-6.png">
+</details>
+
+Now let's config heroku environment variables. Open Heroku application and navigate to __Settings__. Create the next variables and fill them with values from __User__ credentials and __S3__ bucket data
+
+```yml
+AWS_ACCESS_KEY_ID     # AWS User Access key ID
+AWS_SECRET_ACCESS_KEY # AWS User Secret access key
+S3_BUCKET             # S3 bucket name
+S3_REGION             # S3 bucket region
+```
 
 ## Troubleshoot
