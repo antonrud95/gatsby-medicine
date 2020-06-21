@@ -1,7 +1,7 @@
-import React from "react"
-import { Link } from "gatsby"
+import React from 'react'
+import { Link } from 'gatsby'
 
-import FC from "~/types/fc"
+import FC from '~/types/fc'
 
 interface Props {
   siteTitle?: string

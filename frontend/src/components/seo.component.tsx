@@ -5,13 +5,13 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from "react"
-import { Helmet } from "react-helmet"
-import { useStaticQuery, graphql } from "gatsby"
+import React from 'react'
+import { Helmet } from 'react-helmet'
+import { useStaticQuery, graphql } from 'gatsby'
 
 import FC from '~/types/fc'
 
-type MetaProps = JSX.IntrinsicElements["meta"]
+type MetaProps = JSX.IntrinsicElements['meta']
 
 interface Props {
   description?: string
