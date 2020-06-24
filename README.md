@@ -1,4 +1,4 @@
-# Unicorns Starter-Kit
+# Unikorns Starter-Kit
 
 <img src="resource/logo.png" width="200px">
 
