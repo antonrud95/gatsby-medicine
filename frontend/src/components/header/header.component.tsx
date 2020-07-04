@@ -2,18 +2,14 @@ import React from 'react'
 import { Link } from 'gatsby'
 
 import FC from '~/types/fc'
+import style from './header.module.scss'
 
 interface Props {
   siteTitle?: string
 }
 
 const Header: FC<Props> = ({ siteTitle = '' }) => (
-  <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}
-  >
+  <header className={style.Header}>
     <div
       style={{
         margin: `0 auto`,

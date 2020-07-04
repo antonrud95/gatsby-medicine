@@ -13,10 +13,16 @@ module.exports = {
   plugins: [
     'gatsby-plugin-react-helmet',
     {
+      resolve: `gatsby-plugin-sass`,
+      options: {
+        data: `@import "${__dirname}/src/styles/index";`,
+      },
+    },
+    {
       resolve: 'gatsby-source-filesystem',
       options: {
-        name: 'images',
-        path: `${__dirname}/src/images`,
+        name: 'assets',
+        path: `${__dirname}/src/assets`,
       },
     },
     {
@@ -49,7 +55,7 @@ module.exports = {
         background_color: '#663399',
         theme_color: '#663399',
         display: 'minimal-ui',
-        icon: 'src/images/gatsby-icon.png', // This path is relative to the root of the site.
+        icon: 'src/assets/icons/global/favicon.png', // This path is relative to the root of the site.
       },
     },
     'gatsby-plugin-offline',
