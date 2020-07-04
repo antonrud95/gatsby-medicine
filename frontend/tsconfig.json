@@ -13,17 +13,13 @@
     "jsx": "react",
     "baseUrl": ".",
     "allowJs": true,
+    "noEmit": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
     "paths": {
       "~/*": ["./src/*"]
     }
   },
-  "exclude": [
-    "**/*.spec.ts",
-    "node_modules",
-    "vendor",
-    "public"
-  ],
+  "exclude": ["**/*.spec.ts", "node_modules", "vendor", "public"],
   "compileOnSave": false
 }
