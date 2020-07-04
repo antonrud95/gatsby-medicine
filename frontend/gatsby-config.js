@@ -1,7 +1,7 @@
 require('dotenv').config()
 
 const path = require('path')
-const { CMS_URL } = process.env
+const { GATSBY_CMS_URL } = process.env
 
 module.exports = {
   siteMetadata: {
@@ -31,7 +31,7 @@ module.exports = {
     {
       resolve: 'gatsby-source-strapi',
       options: {
-        apiURL: CMS_URL,
+        apiURL: GATSBY_CMS_URL,
         contentTypes: [
           // Insert list of resources
         ],

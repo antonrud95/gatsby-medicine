@@ -99,9 +99,9 @@ __within remote CMS__
 If you want use data from remote CMS, you should update `.env` file in `frontend` directory
 
 ```yml
-# CMS_URL=http://localhost:1337 # old value
+# GATSBY_CMS_URL=http://localhost:1337 # old value
 
-CMS_URL=https://remote-cms-url.com # new value
+GATSBY_CMS_URL=https://remote-cms-url.com # new value
 ```
 
 ## Deployment
