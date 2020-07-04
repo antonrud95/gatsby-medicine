@@ -6,7 +6,7 @@ import Image from '../components/image.component'
 
 const IndexPage = () => (
   <Layout>
-    <SEO title="Unicorns Starter Kit" />
+    <SEO title="Unikorns Starter Kit" />
     <Image />
   </Layout>
 )

@@ -1,19 +1,39 @@
 require('dotenv').config()
 
 const path = require('path')
-const { GATSBY_CMS_URL } = process.env
+const {
+  GATSBY_CMS_URL,
+  GATSBY_SITE_URL,
+  GATSBY_TITLE,
+  GATSBY_DESCRIPTION,
+  GOOGLE_ANALYTICS_ID,
+} = process.env
 
 module.exports = {
   siteMetadata: {
-    title: 'Gatsby Default Starter',
-    description:
-      'Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.',
-    author: '@gatsbyjs',
+    title: GATSBY_TITLE,
+    siteUrl: GATSBY_SITE_URL,
+    description: GATSBY_DESCRIPTION,
+    author: '@unikorns',
   },
   plugins: [
     'gatsby-plugin-react-helmet',
     {
-      resolve: `gatsby-plugin-sass`,
+      resolve: 'gatsby-plugin-google-analytics',
+      options: {
+        trackingId: GOOGLE_ANALYTICS_ID,
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-react-svg',
+      options: {
+        rule: {
+          include: /assets/,
+        },
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-sass',
       options: {
         data: `@import "${__dirname}/src/styles/index";`,
       },
@@ -58,6 +78,15 @@ module.exports = {
         icon: 'src/assets/icons/global/favicon.png', // This path is relative to the root of the site.
       },
     },
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        host: GATSBY_SITE_URL,
+        sitemap: `${GATSBY_SITE_URL}/sitemap.xml`,
+        policy: [{ userAgent: '*', allow: '/' }],
+      },
+    },
+    'gatsby-plugin-sitemap',
     'gatsby-plugin-offline',
   ],
 }

@@ -6,12 +6,12 @@ services:
       - 5432:5432
   web:
     image: strapi/strapi
-    container_name: unicorns-csm
+    container_name: unikorns-csm
     restart: unless-stopped
     env_file: .env
     links:
       - postgres
     volumes:
-      - ./app:/unicorns-csm
+      - ./app:/unikorns-csm
     ports:
       - "1337:1337"

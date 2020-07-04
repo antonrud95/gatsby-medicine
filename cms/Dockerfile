@@ -1,7 +1,7 @@
 FROM node:13.7.0
 
 ENV NODE_ENV production
-ENV APP_ROOT /unicorns_cms
+ENV APP_ROOT /unikorns_cms
 
 RUN mkdir ${APP_ROOT}
 WORKDIR ${APP_ROOT}
