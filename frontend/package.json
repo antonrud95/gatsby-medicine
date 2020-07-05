@@ -5,6 +5,8 @@
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "axios-hooks": "^2.1.0",
+    "axios-retry": "^3.1.8",
     "classnames": "^2.2.6",
     "eslint": "^7.4.0",
     "gatsby": "^2.23.20",
