@@ -7,7 +7,8 @@
     "develop": "concurrently -n DOCKER,STRAPI \"docker-compose up postgres\" \"strapi develop\"",
     "start": "strapi start",
     "build": "strapi build",
-    "strapi": "strapi"
+    "strapi": "strapi",
+    "scripts:alive": "node ./scripts/jobs/alive-instance.js"
   },
   "devDependencies": {},
   "dependencies": {
