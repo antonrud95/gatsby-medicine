@@ -134,6 +134,8 @@ Add addons to application:
 `Papertrail` - Server Logs
 <br/>
 `Rollbar` - Error monitoring
+<br/>
+`Heroku Scheduler` - Scheduled scripts
 
 <details>
   <summary>Example</summary>
@@ -147,6 +149,16 @@ After application created open your terminal window and run the next command:
 ```bash
 $ heroku stack:set container -a your_application
 ```
+
+<br/>
+
+Config `alive script`
+For make the instance be always available on free plan, we should set up [alive script](/cms/scripts/jobs/alive-instance.js) in Heroku Scheduler
+
+<details>
+  <summary>Example</summary>
+  <img src="./resource/scheduler-1.png">
+</details>
 
 <br/>
 
