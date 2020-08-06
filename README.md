@@ -14,9 +14,9 @@ This project is designed to simplify the lives of developers and reduce routine 
 | NodeJS  |`>= 13.7.0` |
 
 
-1. [Get started](#Get started)
-2. [Development](#Development)
-3. [Deployment](#Deployment)
+1. [Get started](#markdown-header-get-started)
+2. [Development](#markdown-header-development)
+3. [Deployment](#markdown-header-deployment)
 
 ---
 
@@ -71,7 +71,7 @@ $ docker-compose up
 
 ## Development
 
-Before staring the development process make sure that you successfully completed [Get started](#Get started) step
+Before staring the development process make sure that you successfully completed [Get started](#markdown-header-get-started) step
 
 Create a copy of `.env.example` file and just rename it to `.env` You should do this operation in `cms` directory as well as in `frontend`
 
