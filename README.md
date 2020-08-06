@@ -2,7 +2,7 @@
 
 # Unikorns StarterKit (Gatsby + Strapi)
 
-This project is designed to simplify the lives of developers and reduce routine processes during setting up a [Gatsby](https://www.gatsbyjs.org/) and [Strapi](https://strapi.io/) projects
+This project is designed to simplify developers lives and reduce routine processes during setting up a [Gatsby](https://www.gatsbyjs.org/) and [Strapi](https://strapi.io/) projects
 
 ---
 
@@ -17,6 +17,9 @@ This project is designed to simplify the lives of developers and reduce routine 
 1. [Get started](#markdown-header-get-started)
 2. [Development](#markdown-header-development)
 3. [Deployment](#markdown-header-deployment)
+	*	[Create heroku application](#markdown-header-create-heroku-application)
+	*	[Add addons to application](#markdown-header-add-addons-to-application)
+	*	[AWS S3 Storage Setup](#markdown-header-aws-s3-storage-setup)
 
 ---
 
