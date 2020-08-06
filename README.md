@@ -1,6 +1,6 @@
-# Unikorns Starter-Kit
+![unikorns-logo-horizontal](https://user-images.githubusercontent.com/15017363/89563653-0dc63980-d81c-11ea-910a-ec4cd13d7a0b.png)
 
-![logo](https://bitbucket.org/unikorns/unikorns.starterkit/src/master/resource/logo.png)
+# Unikorns StarterKit (Gatsby + Strapi)
 
 This project is designed to simplify the lives of developers and reduce routine processes during setting up a [Gatsby](https://www.gatsbyjs.org/) and [Strapi](https://strapi.io/) projects
 
@@ -13,228 +13,240 @@ This project is designed to simplify the lives of developers and reduce routine 
 | Docker  |`>= 19.03.8`|
 | NodeJS  |`>= 13.7.0` |
 
-<br />
 
-# Table of Contents
-
-1. [Installation](#Installation)
+1. [Get started](#Get started)
 2. [Development](#Development)
 3. [Deployment](#Deployment)
-4. [Troubleshoot](#Troubleshoot)
 
 ---
 
-## Installation
+## Get started
 
-Make sure that you have installed all [required tools](#Required-tools) installed on your local machine.
+Before that make sure that you have all required tools installed on your local machine.
+
+Then:
+
+1. Open our Bitbucket
+2. Create new empty project repository
+3. Open unikorns.straterkit repository
+4. Copy link for cloning
+5. Clone unikorns.straterkit repository to your local
+6. Open cloned project
+7. While in the project directory write `git remote -v` in command line. As a response you can see that `remote origin` it set on template repo. We're going to change it.
+8. For that open empty project repo created on our Bitbucket
+9. Copy repo git address (all after `git clone`)
+10. Return to the IDE and write following command in Terminal: `git remote set-url origin <paste copied repo git address here>` 
+11. Alright, we're almost there. Now we should check if address was set correctly. To do that just hit `git remote -v` again. If you see new address we are on the right way. Go next ⇒
+12. Now we should push configurated project to the remote. For that write `git push` in Terminal.
+13. Amazing! Now we can change the default name of the project folder from `unikorns.straterkit` to `<project name>` and start working on that.
+
+### Frontend
+
+Go to frontend folder of the project and install all needed npm modules:
+
+```bash
+$ cd frontend
+$ npm i
+```
+
+Create a copy of `.env.example` file and just rename it to `.env`
 
 ### CMS
-For install CMS dependencies run next command in your terminal
 
-__within Docker__
+To install CMS dependencies run the next command in Terminal
+
+**without Docker**
+
+```bash
+$ cd cms
+$ npm i
+```
+
+**within Docker**
 
 ```bash
 $ cd cms
 $ docker-compose up
 ```
 
-__without Docker__
-
-```bash
-$ cd cms
-$ npm i
-```
-
-### Frontend
-For install Frontend dependencies run next command in your terminal
-
-```bash
-$ cd frontend
-$ npm i
-```
-
 ## Development
-Before start development process make sure that you successfully completed [Installation](#Installation) step
 
-In first let's create `.env` file in project root directory and copy content from `.env.example` file to it. You should do this operation in `cms` directory as long as in `frontend`.
+Before staring the development process make sure that you successfully completed [Get started](#Get started) step
 
-For starting development process run following commands in your terminal
+Create a copy of `.env.example` file and just rename it to `.env` You should do this operation in `cms` directory as well as in `frontend`
 
-__within Docker__
+For starting the development process run the following commands in your terminal
 
-```bash
-# window #1
-$ cd cms
-$ cd docker-compose up
+---
 
-# window #2
-$ cd frontend
-$ npm run develop
-```
+**without Docker**
 
-__without Docker__
+Before running the CMS you should make one extra step. Open `.env` file in `cms` directory and update the next line:
 
-Before run CMS should make one extra step. Open `.env` file in `cms` directory and update next line:
-
-```yml
+```xml
 # DATABASE_HOST=postgres # old value
-
 DATABASE_HOST=127.0.0.1 # new value
 ```
 
-Now we can run CMS without docker container
+Now we can run the CMS without docker container
 
 ```bash
-# window one
+# first terminal tab
 $ cd cms
-$ cd npm run develop
+$ npm run develop
 
-# window two
+# second terminal tab
 $ cd frontend
 $ npm run develop
 ```
 
-__within remote CMS__
+‼️Remember that you should have Docker opened even if you go **without Docker** option. Database still needs Docker.
 
-If you want use data from remote CMS, you should update `.env` file in `frontend` directory
+---
 
-```yml
+**within Docker**
+
+```bash
+# first terminal tab
+$ cd cms
+$ docker-compose up
+
+# second terminal tab
+$ cd frontend
+$ npm run develop
+```
+
+---
+
+**within remote CMS**
+
+If you want to use data from remote CMS, you should update `.env` file in `frontend` directory
+
+
+```xml
 # GATSBY_CMS_URL=http://localhost:1337 # old value
-
 GATSBY_CMS_URL=https://remote-cms-url.com # new value
 ```
 
 ## Deployment
-Before deploy application make sure that you have credentials to Heroku and AWS accounts and installed Heroku CLI.
 
-### Create heroku application:
+Before deploying the application make sure that you have credentials to Heroku and AWS accounts and installed Heroku CLI.
 
-Navigate to Heroku dashboard and click on __New > Create new app__
+### Create heroku application
 
-<details>
-  <summary>Example</summary>
-  <img src="./resource/heroku-1.png">
-</details>
+Navigate to Heroku dashboard and click on **New > Create new app**
 
-<br/>
+![heroku-1](https://user-images.githubusercontent.com/15017363/89571219-9bf3ed00-d827-11ea-8730-969aa538d046.png)
 
-Provide application name and select the region. _(The region should depends to client business location)_
 
-<details>
-  <summary>Example</summary>
-  <img src="./resource/heroku-2.png">
-</details>
+Enter the application name and select the region. (The region depends on client business location)
 
-<br/>
+![heroku-2](https://user-images.githubusercontent.com/15017363/89571221-9d251a00-d827-11ea-8161-e0bf37a2ca08.png)
 
-Add addons to application:
+### Add addons to application
 
 `Heroku Postgres` - Database
-<br/>
+
 `Papertrail` - Server Logs
-<br/>
+
 `Rollbar` - Error monitoring
-<br/>
+
 `Heroku Scheduler` - Scheduled scripts
 
-<details>
-  <summary>Example</summary>
-  <img src="./resource/heroku-3.png">
-</details>
+![heroku-3](https://user-images.githubusercontent.com/15017363/89571226-9dbdb080-d827-11ea-96db-175ed049994b.png)
 
-<br/>
 
-After application created open your terminal window and run the next command:
+After the application is created open your terminal window and run the next command:
 
-```bash
-$ heroku stack:set container -a your_application
-```
+`$ heroku stack:set container -a <your_application>`
 
-<br/>
+Config `alive script` For making the instance always available on free plan, we should set up alive script in Heroku Scheduler
 
-Config `alive script`
-For make the instance be always available on free plan, we should set up [alive script](/cms/scripts/jobs/alive-instance.js) in Heroku Scheduler
+![scheduler-1](https://user-images.githubusercontent.com/15017363/89571509-16bd0800-d828-11ea-9c33-8f802ae9a464.png)
 
-<details>
-  <summary>Example</summary>
-  <img src="./resource/scheduler-1.png">
-</details>
 
-<br/>
+### AWS S3 Storage Setup
 
-### Config file upload:
+Navigate to AWS dashboard, search for S3 service and click on **Create bucket** button
 
-Navigate to AWS dashboard search for S3 service and click on __Create bucket__ bucket button
+1. Enter the bucket name
+2. On **Set permissions** step choose options from the screenshot below
+3. Create the bucket
 
-1. Provide bucket name
-2. On __Set permissions__ step choose options from the screenshot belowe
-3. Create the buckent 
+![aws-1](https://user-images.githubusercontent.com/15017363/89571637-4b30c400-d828-11ea-934d-4719931e0870.png)
+![aws-2](https://user-images.githubusercontent.com/15017363/89571736-79160880-d828-11ea-9801-9b83abbf00b8.png)
+![aws-3](https://user-images.githubusercontent.com/15017363/89571741-7adfcc00-d828-11ea-8415-3e3de839021c.png)
 
-<details>
-  <summary>Example</summary>
-  <img src="./resource/aws-1.png">
-  <img src="./resource/aws-2.png">
-  <img src="./resource/aws-3.png">
-</details>
+Create `[IAM](https://aws.amazon.com/iam/)` use for this bucket.
 
-Create [`IAM`](https://aws.amazon.com/iam/) use for this bucket.
+Go to **IAM > Users > Add user**
 
-Navigate to __IAM > Users > Add user__
+Enter the **User name** and select **Programmatic access**
 
-Provide User name and select __Programmatic access__
-<details>
-  <summary>Example</summary>
-  <img src="./resource/iam-1.png">
-</details>
+![iam-1](https://user-images.githubusercontent.com/15017363/89572087-f477ba00-d828-11ea-8864-bb4e9fba48e6.png)
 
-Go to the next step and select __Attach existing policies directly__ option. Then click on __Create policy__ button
-<details>
-  <summary>Example</summary>
-  <img src="./resource/iam-2.png">
-</details>
+Go to the next step and select Attach existing policies directly option. Then click on Create policy button
 
-In new window, choose S3 service and attach next actions.
-  1. __Read > GetObject__
-  2. __Read > GetObjectAcl__
-  3. __Read > GetObjectVersion__
-  4. __Read > GetObjectVersionAcl__
-  5. __Write > DeleteObject__
-  6. __Write > DeleteObjectVersion__
-  7. __Write > PutObject__
-  8. __Permissions management > PutObjectAcl__
-  9. __Permissions management > PutObjectVersionAcl__
-<details>
-  <summary>Example</summary>
-  <img src="./resource/iam-3.png">
-</details>
+![iam-2](https://user-images.githubusercontent.com/15017363/89572095-f6da1400-d828-11ea-82ca-3b6ddda2012a.png)
 
-In __Resources__ section provide S3 bucket name and allowe all objects via `*` symbol
-<details>
-  <summary>Example</summary>
-  <img src="./resource/iam-4.png">
-</details>
+In a new window, choose S3 service and mark the following actions:
 
-Go to the next step and provide __Policy name__
+1. **Read > GetObject**
+2. **Read > GetObjectAcl**
+3. **Read > GetObjectVersion**
+4. **Read > GetObjectVersionAcl**
+5. **Write > DeleteObject**
+6. **Write > DeleteObjectVersion**
+7. **Write > PutObject**
+8. **Permissions management > PutObjectAcl**
+9. **Permissions management > PutObjectVersionAcl**
+
+![iam-3](https://user-images.githubusercontent.com/15017363/89572097-f772aa80-d828-11ea-8cbb-495a8d7a6a64.png)
+
+In Resources section go to Add ARN and enter S3 bucket name and allow all objects via `*` symbol
+
+![iam-4-1](https://user-images.githubusercontent.com/15017363/89572629-aa430880-d829-11ea-8b77-34f27a6ab3fc.png)
+![iam-4](https://user-images.githubusercontent.com/15017363/89572099-f80b4100-d828-11ea-83bb-602cc8ff3c1d.png)
+
+Go to the next step and enter **Policy name**
 
 Return to the previous page and search for created Policy
-<details>
-  <summary>Example</summary>
-  <img src="./resource/iam-5.png">
-</details>
 
-Create new User and save credentials
-<details>
-  <summary>Example</summary>
-  <img src="./resource/iam-6.png">
-</details>
+![iam-5](https://user-images.githubusercontent.com/15017363/89572100-f8a3d780-d828-11ea-997a-d73643ac6e4e.png)
 
-Now let's config heroku environment variables. Open Heroku application and navigate to __Settings__. Create the next variables and fill them with values from __User__ credentials and __S3__ bucket data
+Create a new User and save credentials
 
-```yml
+![iam-6](https://user-images.githubusercontent.com/15017363/89572103-f8a3d780-d828-11ea-9048-2050752c2342.png)
+
+---
+
+Now let's config heroku environment variables. Open Heroku application and go to Settings. Create the next variables and fill them with values from User credentials and S3 bucket data
+
+
+```xml
 AWS_ACCESS_KEY_ID     # AWS User Access key ID
 AWS_SECRET_ACCESS_KEY # AWS User Secret access key
 S3_BUCKET             # S3 bucket name
 S3_REGION             # S3 bucket region
 ```
 
-## Troubleshoot
+---
+
+Now you can push cms to heroku.
+
+
+`heroku git:remote -a <your_application>`
+
+And then depending on what branch you're working in you should run:
+
+`git push heroku <current_branch_name>:master`
+
+If you're on master already you can just run:
+
+`git push heroku master`
+
+---
+
+One important thing at the end. After you deployed cms to heroku you should open it and set up **Roles & Permissions** for every content types.
+
+Have fun 🌈
