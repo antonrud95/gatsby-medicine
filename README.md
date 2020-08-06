@@ -1,6 +1,6 @@
 # Unikorns Starter-Kit
 
-<img src="resource/logo.png" width="200px">
+![logo](https://bitbucket.org/unikorns/unikorns.starterkit/src/master/resource/logo.png)
 
 This project is designed to simplify the lives of developers and reduce routine processes during setting up a [Gatsby](https://www.gatsbyjs.org/) and [Strapi](https://strapi.io/) projects
 
