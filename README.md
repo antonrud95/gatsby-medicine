@@ -100,7 +100,7 @@ $ npm run develop
 
 # second terminal tab
 $ cd frontend
-$ npm run develop
+$ npm start
 ```
 
 ‼️Remember that you should have Docker opened even if you go **without Docker** option. Database still needs Docker.
@@ -116,7 +116,7 @@ $ docker-compose up
 
 # second terminal tab
 $ cd frontend
-$ npm run develop
+$ npm start
 ```
 
 ---
