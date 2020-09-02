@@ -1,15 +1,13 @@
 import React from 'react'
+import Navbar from '~/components/ui/general/navbar/navbar.component'
+import '~/styles/index.scss'
 
 const Layout = ({ children }) => {
   return (
     <>
+      <Navbar />
       <main>{children}</main>
-      <footer>
-        © {new Date().getFullYear()}, Built with
-        {` `}
-        <a href="https://www.gatsbyjs.org">Gatsby</a> and{' '}
-        <a href="http://strapi.io">Strapi</a>
-      </footer>
+      <footer>© Unikorns Gatsby Starter</footer>
     </>
   )
 }

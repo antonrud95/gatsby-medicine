@@ -35,12 +35,6 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-sass',
-      options: {
-        data: `@import "${__dirname}/src/styles/index";`,
-      },
-    },
-    {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'assets',
