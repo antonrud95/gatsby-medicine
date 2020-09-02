@@ -1,33 +1,13 @@
 import React from 'react'
-import { useStaticQuery, graphql } from 'gatsby'
-
-import Header from '~/components/header/header.component'
-
-const query = graphql`
-  query SiteTitleQuery {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-  }
-`
+import Navbar from '~/components/ui/general/navbar/navbar.component'
+import '~/styles/index.scss'
 
 const Layout = ({ children }) => {
-  const data = useStaticQuery(query)
-
   return (
     <>
-      <Header siteTitle={data.site.siteMetadata.title} />
-
+      <Navbar />
       <main>{children}</main>
-
-      <footer>
-        © {new Date().getFullYear()}, Built with
-        {` `}
-        <a href="https://www.gatsbyjs.org">Gatsby</a> and{' '}
-        <a href="http://strapi.io">Strapi</a>
-      </footer>
+      <footer className={'text-center'}>© Unikorns Gatsby Starter</footer>
     </>
   )
 }
