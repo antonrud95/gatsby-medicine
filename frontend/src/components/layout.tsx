@@ -7,7 +7,7 @@ const Layout = ({ children }) => {
     <>
       <Navbar />
       <main>{children}</main>
-      <footer>© Unikorns Gatsby Starter</footer>
+      <footer className={'text-center'}>© Unikorns Gatsby Starter</footer>
     </>
   )
 }
