@@ -1,4 +1,4 @@
-version: '3.7'
+version: "3.7"
 services:
   postgres:
     image: postgres:12.1
@@ -6,12 +6,12 @@ services:
       - 5432:5432
   web:
     image: strapi/strapi
-    container_name: unikorns-csm
+    container_name: unikorns-cms
     restart: unless-stopped
     env_file: .env
     links:
       - postgres
     volumes:
-      - ./app:/unikorns-csm
+      - ./app:/unikorns-cms
     ports:
       - "1337:1337"

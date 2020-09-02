@@ -2,12 +2,14 @@ require('dotenv').config()
 
 const path = require('path')
 const {
+  GATSBY_ACTIVE_ENV,
   GATSBY_CMS_URL,
   GATSBY_SITE_URL,
   GATSBY_TITLE,
   GATSBY_DESCRIPTION,
   GOOGLE_ANALYTICS_ID,
 } = process.env
+const isProd = GATSBY_ACTIVE_ENV === 'production'
 
 module.exports = {
   siteMetadata: {
@@ -69,11 +71,9 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        name: 'gatsby-starter-default',
-        short_name: 'starter',
+        name: 'unikorns-gatsby-starter',
+        short_name: 'unikorns',
         start_url: '/',
-        background_color: '#663399',
-        theme_color: '#663399',
         display: 'minimal-ui',
         icon: 'src/assets/icons/global/favicon.png', // This path is relative to the root of the site.
       },
@@ -83,10 +83,13 @@ module.exports = {
       options: {
         host: GATSBY_SITE_URL,
         sitemap: `${GATSBY_SITE_URL}/sitemap.xml`,
-        policy: [{ userAgent: '*', allow: '/' }],
+        policy: isProd
+          ? [{ userAgent: '*', allow: '/' }]
+          : [{ userAgent: '*', disallow: '/' }],
       },
     },
     'gatsby-plugin-sitemap',
     'gatsby-plugin-offline',
+    'gatsby-plugin-sass',
   ],
 }
