@@ -128,10 +128,14 @@ If you want to use data from remote CMS, you should update `.env` file in `front
 GATSBY_CMS_URL=https://remote-cms-url.com # new value
 ```
 
+---
+
 ## AWS S3 Storage Setup
 
 In case we choose Strapi as a CMS we should host media assets somewhere. We use AWS S3 for that.   
 You can find the instruction of how to set up S3 bucket [here](https://unikorns.atlassian.net/wiki/spaces/PP/pages/476774471/Set+up+AWS+S3+Bucket)
+
+---
 
 ## Deployment
 
@@ -144,5 +148,7 @@ The instuction is [here](https://unikorns.atlassian.net/wiki/spaces/PP/pages/343
 ### Heroku setup (for Strapi)
 
 The instruction is [here](https://unikorns.atlassian.net/wiki/spaces/PP/pages/343572614/Strapi+CMS+Deployment)
+
+---
 
 If you notice any misleading information, please contact Dima Miro (dima.miro@unikorns.work)
