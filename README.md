@@ -130,7 +130,7 @@ GATSBY_CMS_URL=https://remote-cms-url.com # new value
 
 ## AWS S3 Storage Setup
 
-In case we choose Strapi as a CMS we should host media assets somewhere. For this we you AWS S3.
+In case we choose Strapi as a CMS we should host media assets somewhere. We use AWS S3 for that.   
 You can find the instruction of how to set up S3 bucket [here](https://unikorns.atlassian.net/wiki/spaces/PP/pages/476774471/Set+up+AWS+S3+Bucket)
 
 ## Deployment
