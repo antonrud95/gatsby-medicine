@@ -12,6 +12,6 @@ services:
     links:
       - postgres
     volumes:
-      - ./app:/unikorns-cms
+      - .:/srv/app
     ports:
       - "1337:1337"
