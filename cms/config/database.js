@@ -1,44 +1,28 @@
-const url = require('url');
+require('dotenv').config()
 
-module.exports = ({ env }) => {
-  let settings = {};
+const {
+  MONGO_HOST,
+  MONGO_USER,
+  MONGO_PASSWORD,
+} = process.env
 
-  if (process.env.NODE_ENV === 'production' && process.env.DATABASE_URL) {
-    const parsed = url.parse(env('DATABASE_URL', ''));
-    const [username, password] = parsed.auth.split(':');
-    const database = parsed.pathname.substr(1);
-    const ssl = parsed.query && parsed.query.ssl === 'true'
-
-    settings = {
-      host: parsed.hostname,
-      port: Number(parsed.port),
-      database,
-      username,
-      password,
-      ssl,
-    }
-  } else {
-    settings = {
-      host: env('DATABASE_HOST', '127.0.0.1'),
-      port: env.int('DATABASE_PORT', 5432),
-      database: env('DATABASE_NAME', 'postgres'),
-      username: env('DATABASE_USERNAME', 'postgres'),
-      password: env('DATABASE_PASSWORD', 'postgres'),
-      ssl: env.bool('DATABASE_SSL', false),
-    }
-  }
-
-  return {
-    defaultConnection: 'default',
-    connections: {
-      default: {
-        connector: 'bookshelf',
-        settings: {
-          client: 'postgres',
-          ...settings
-        },
-        options: {}
+module.exports = ({ env }) => ({
+  defaultConnection: 'default',
+  connections: {
+    default: {
+      connector: 'mongoose',
+      settings: {
+        host: env('DATABASE_HOST', MONGO_HOST),
+        srv: env.bool('DATABASE_SRV', true),
+        port: env.int('DATABASE_PORT', 27017),
+        database: env('DATABASE_NAME', 'cms'),
+        username: env('DATABASE_USERNAME', MONGO_USER),
+        password: env('DATABASE_PASSWORD', MONGO_PASSWORD),
+      },
+      options: {
+        authenticationDatabase: env('AUTHENTICATION_DATABASE', null),
+        ssl: env.bool('DATABASE_SSL', true),
       },
     },
-  };
-};
+  },
+});

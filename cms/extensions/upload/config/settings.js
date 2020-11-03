@@ -1,16 +1,8 @@
-if (process.env.NODE_ENV === 'production') {
-  module.exports = {
-    provider: 'aws-s3',
+module.exports = {
+    provider: 'cloudinary',
     providerOptions: {
-      accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-      secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-      region: process.env.S3_REGION,
-      params: {
-        Bucket: process.env.S3_BUCKET
-      }
+      cloud_name: process.env.CLOUDINARY_NAME,
+      api_key: process.env.CLOUDINARY_API,
+      api_secret: process.env.CLOUDINARY_SECRET,
     },
-  };
-} else {
-  // to use the default local provider you can return an empty configuration
-  module.exports = {};
-}
+};
