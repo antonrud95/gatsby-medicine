@@ -33,47 +33,73 @@ const HeroSection = () => {
           }
         }
       }
+      leftBg: file(relativePath: { eq: "images/hero/image-left.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 264, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      rightBg: file(relativePath: { eq: "images/hero/image-right.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 368, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
     }
   `)
   return (
-    <Container>
-      <div className={styles.heroBlock}>
-        <h2 className={styles.headerMainTitle}>
-          Введи название препарата в строку ниже
-        </h2>
-        <div className={styles.formWrapper}>
-          <div className={styles.searchBox}>
-            <FontAwesomeIcon
-              icon={faSearch}
-              size="lg"
-              className={styles.iconStyles}
+    <Container fluid className={styles.fluidContainer}>
+      <Container>
+        <div className={styles.heroBlock}>
+          <h2 className={styles.headerMainTitle}>
+            Введи название препарата в строку ниже
+          </h2>
+          <div className={styles.formWrapper}>
+            <div className={styles.searchBox}>
+              <FontAwesomeIcon
+                icon={faSearch}
+                size="lg"
+                className={styles.iconStyles}
+              />
+              <SInput
+                type="text"
+                placeholder="Введите название препарата"
+                styles={styles.input}
+              />
+            </div>
+
+            <SButton variant="primary" className={styles.formBtn}>
+              Найти
+            </SButton>
+          </div>
+          <div className={styles.imageWrapper}>
+            <Img
+              fluid={data.firstStep.childImageSharp.fluid}
+              className={styles.headerImage}
             />
-            <SInput
-              type="text"
-              placeholder="Введите название препарата"
-              styles={styles.input}
+            <Img
+              fluid={data.line.childImageSharp.fluid}
+              className={styles.lineImage}
+            />
+            <Img
+              fluid={data.secondStep.childImageSharp.fluid}
+              className={styles.headerImage}
             />
           </div>
-
-          <SButton variant="primary" className={styles.formBtn}>
-            Найти
-          </SButton>
+          <div className={styles.bgImageWrapper}>
+            <Img
+              fluid={data.leftBg.childImageSharp.fluid}
+              className={styles.headerLeftImage}
+            />
+            <Img
+              fluid={data.rightBg.childImageSharp.fluid}
+              className={styles.headerRightImage}
+            />
+          </div>
         </div>
-        <div className={styles.imageWrapper}>
-          <Img
-            fluid={data.firstStep.childImageSharp.fluid}
-            className={styles.headerImage}
-          />
-          <Img
-            fluid={data.line.childImageSharp.fluid}
-            className={styles.lineImage}
-          />
-          <Img
-            fluid={data.secondStep.childImageSharp.fluid}
-            className={styles.headerImage}
-          />
-        </div>
-      </div>
+      </Container>
     </Container>
   )
 }
