@@ -2,11 +2,32 @@
 @import 'src/styles/mixins';
 
 .hero-block {
-  padding-top: 214px;
+  padding-top: 120px;
+  @include breakpoint('mobile') {
+    padding-top: 214px;
+  }
 }
 .image-wrapper {
-  margin-top: 150px;
-  width: 270px;
+  margin-top: 80px;
+  .line-image {
+    width: 174px;
+    height: 38px;
+    margin: 85px auto 75px auto !important;
+    transform: rotate(90deg);
+  }
+  .header-image {
+    width: 270px;
+    margin: 0 auto !important;
+  }
+  @include breakpoint('mobile') {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .line-image {
+      transform: rotate(0deg);
+      margin: 0;
+    }
+  }
 }
 
 .header-main-title {
@@ -18,25 +39,30 @@
 }
 
 .form-wrapper {
-  display: flex;
-  align-items: center;
-  box-shadow: 7px 7px 30px rgba(0, 0, 0, 0.08);
-  border-radius: 100px;
-  min-height: 60px;
+  .search-box {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    .icon-styles {
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: $primary;
+    }
+  }
   .input {
-    border: none;
+    border: 2px solid $primary;
+    min-height: 60px;
+    border-radius: 100px;
     outline: none;
     font-family: 'AvenirNextCyr-Regular', sans-serif;
-    font-size: 24px;
+    font-size: 20px;
     line-height: 30px;
     color: #595959;
-    opacity: 0.5;
-    width: 100%;
-    padding-left: 25px;
-  }
-  .icon-styles {
-    margin-left: 20px;
-    color: $primary;
+    width: 100% !important;
+    padding-left: 50px;
   }
   .form-btn {
     font-family: 'AvenirNextCyr-Bold', sans-serif;
@@ -44,7 +70,33 @@
     line-height: 30px;
     background-color: $primary;
     min-height: 60px;
-    min-width: 218px;
-    border-radius: 175px 100px 100px 0px;
+    width: 100%;
+    border-radius: 100px;
+    margin-top: 20px;
   }
+  @include breakpoint('mobile') {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 7px 7px 30px rgba(0, 0, 0, 0.08);
+    border-radius: 100px;
+    min-height: 60px;
+    max-width: 790px;
+    margin: 0 auto;
+    .input {
+      border: none;
+      outline: none;
+      font-size: 24px;
+      line-height: 30px;
+      padding-left: 75px;
+      margin-bottom: 0;
+    }
+    .form-btn {
+      max-width: 218px;
+      border-radius: 175px 100px 100px 0px;
+      margin-top: 0;
+    }
+  }
+  
 }
+

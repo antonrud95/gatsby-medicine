@@ -19,6 +19,13 @@ const HeroSection = () => {
           }
         }
       }
+      line: file(relativePath: { eq: "images/hero/line.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 174, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
       secondStep: file(relativePath: { eq: "images/hero/second-step.png" }) {
         childImageSharp {
           fluid(maxWidth: 270, quality: 100) {
@@ -35,16 +42,19 @@ const HeroSection = () => {
           Введи название препарата в строку ниже
         </h2>
         <div className={styles.formWrapper}>
-          <FontAwesomeIcon
-            icon={faSearch}
-            size="lg"
-            className={styles.iconStyles}
-          />
-          <SInput
-            type="text"
-            placeholder="Введите название препарата"
-            styles={styles.input}
-          />
+          <div className={styles.searchBox}>
+            <FontAwesomeIcon
+              icon={faSearch}
+              size="lg"
+              className={styles.iconStyles}
+            />
+            <SInput
+              type="text"
+              placeholder="Введите название препарата"
+              styles={styles.input}
+            />
+          </div>
+
           <SButton variant="primary" className={styles.formBtn}>
             Найти
           </SButton>
@@ -53,6 +63,10 @@ const HeroSection = () => {
           <Img
             fluid={data.firstStep.childImageSharp.fluid}
             className={styles.headerImage}
+          />
+          <Img
+            fluid={data.line.childImageSharp.fluid}
+            className={styles.lineImage}
           />
           <Img
             fluid={data.secondStep.childImageSharp.fluid}
