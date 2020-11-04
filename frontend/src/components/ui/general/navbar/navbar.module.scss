@@ -1,5 +1,35 @@
 @import 'src/styles/variables';
 @import 'src/styles/mixins';
+
+
+.nav-link-logo {
+  font-size: 18px;
+  line-height: 27px;
+  color: $primary;
+  font-weight: 700;
+  border: 2px solid $primary;
+  padding: 9px 29px;
+  border-radius: 100px;
+  transition: 0.3s ease-in-out;
+  &:hover {
+    background-color: $primary;
+    color: #fff;
+  }
+}
+
+.nav-link {
+  font-family: 'AvenirNextCyr-Medium', sans-serif;
+  font-size: 16px;
+  line-height: 16px;
+  transition: 0.3s ease-in-out;
+  color: $primary;
+  &:hover {
+    color: $primary;
+    padding-bottom: 10px;
+  }
+}
+
+
 .navbar {
   background-color: transparent;
   padding: 1.5rem 0;
@@ -12,22 +42,4 @@
     display: flex;
   }
 }
-.nav-link {
-  font-family: 'Arial', sans-serif;
-  font-size: 16px;
-  color: $primary;
-  margin: 0 1.5rem;
-  padding: 0.25rem 0;
-  border-bottom: 2px solid transparent;
-  transition: all 0.3s ease-in-out;
-  &:hover {
-    border-bottom: 2px solid $primary;
-    color: $primary;
-  }
-}
-.open-icon {
-  display: block;
-  @include breakpoint('tablet') {
-    display: none;
-  }
-}
+
