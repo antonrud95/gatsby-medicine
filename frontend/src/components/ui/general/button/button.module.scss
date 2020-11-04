@@ -1,6 +1,6 @@
 @import 'src/styles/variables';
 .button {
-  font-family: 'Arial', sans-serif;
+  font-family: 'AvenirNextCyr-Medium', sans-serif;
   font-size: 16px;
   line-height: 24px;
   color: white;
@@ -8,7 +8,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 48px;
+  min-height: 40px;
   border: none;
   border-radius: 10px;
   transition: all 0.1s ease-in-out;
@@ -39,16 +39,16 @@
 .secondary {
   color: $primary;
   background-color: transparent;
-  border: 2px solid $primary;
+  border: 1px solid transparent;
+  border-radius: 175px 100px 100px 0px !important;
+  box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.1);
   &:hover,
   &:focus {
     color: $primary;
     background-color: transparent;
-    border: 2px solid $primary;
   }
   &:active {
     color: $primary !important;
     background-color: transparent !important;
-    border: 2px solid $primary !important;
   }
 }
