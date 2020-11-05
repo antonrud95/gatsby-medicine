@@ -1,0 +1,46 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sales",
+  "info": {
+    "name": "sale"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "image": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "title": {
+      "type": "string"
+    },
+    "descFirst": {
+      "type": "string"
+    },
+    "descSecond": {
+      "type": "string"
+    },
+    "descThird": {
+      "type": "string"
+    },
+    "descFourth": {
+      "type": "string"
+    },
+    "price": {
+      "type": "string"
+    },
+    "oldPrice": {
+      "type": "string"
+    }
+  }
+}
