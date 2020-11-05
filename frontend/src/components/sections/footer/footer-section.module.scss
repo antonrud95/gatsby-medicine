@@ -1,0 +1,109 @@
+@import 'src/styles/variables';
+@import 'src/styles/mixins';
+
+.upper-container {
+    background-color: #f5f5f5;
+    padding: 28px 0;
+}
+
+.lowerContainer {
+    background-color: #efefef;
+    padding: 43px 0;
+}
+
+.upper-border-container {
+    @include breakpoint('tablet') {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
+.nav-link-logo {
+    font-size: 18px;
+    line-height: 27px;
+    color: $primary;
+    font-weight: 700;
+    border: 2px solid $primary;
+    padding: 9px 29px;
+    border-radius: 100px;
+    transition: 0.3s ease-in-out;
+    max-width: 100px;
+    &:hover {
+      background-color: $primary;
+      color: #fff;
+    }
+}
+
+.image-wrapper {
+    .image-styles {
+        width: 94px;
+    }
+}
+
+.nav-link {
+    font-family: 'AvenirNextCyr-Medium', sans-serif;
+    font-size: 16px;
+    line-height: 16px;
+    transition: 0.3s ease-in-out;
+    color: $primary !important;
+    &:hover {
+      color: $primary;
+      padding-bottom: 10px;
+    }
+}
+
+.phone-wrapper {
+    margin: 20px 0;
+    @include breakpoint('mobile') {
+        margin: 0;
+    }
+}
+
+.phone-icon {
+    margin-right: 10px;
+}
+
+.page-links {
+    @include breakpoint('mobile') {
+        width: 445px;
+        display: flex;
+        justify-content: space-between;
+        .page-left-wrapper {
+            margin: 0;
+        }
+        .page-right-wrapper {
+            margin: 0;
+        }
+    }
+    .page-left-wrapper {
+        margin: 30px 0 15px 0;
+    }
+    .page-right-wrapper {
+        margin: 30px 0 15px 0;
+    }
+    .page-link-upper {
+        font-family: 'AvenirNextCyr-Normal', sans-serif !important;
+        font-size: 14px !important;
+        line-height: 18px !important;
+        padding-bottom: 17px !important;
+    }
+    .page-link-lower {
+        font-family: 'AvenirNextCyr-Normal', sans-serif !important;
+        font-size: 14px !important;
+        line-height: 18px !important;
+        padding-top: 17px !important;
+    }
+}
+
+.border {
+    border-bottom: 1px solid $primary;
+}
+
+.footer-title {
+    margin-bottom: 0;
+    text-align: center;
+    font-family: 'UnicumCondThinC', sans-serif;
+    font-size: 80px;
+    text-transform: uppercase;
+}

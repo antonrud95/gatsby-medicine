@@ -8,6 +8,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
     "@fortawesome/free-solid-svg-icons": "^5.15.1",
     "@fortawesome/react-fontawesome": "^0.1.12",
+    "@n8tb1t/use-scroll-position": "^2.0.3",
     "axios-hooks": "^2.1.0",
     "axios-retry": "^3.1.8",
     "bootstrap": "^4.5.2",
