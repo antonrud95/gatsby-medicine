@@ -1,9 +1,33 @@
 @import 'src/styles/variables';
 @import 'src/styles/mixins';
 
+.products-container {
+    @include breakpoint('mobile') {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+}
+
+.main-title {
+    font-family: 'AvenirNextCyr-Medium', sans-serif;
+    font-size: 24px;
+    line-height: 29px;
+    text-align: center;
+    margin-bottom: 42px;
+}
+
 .product-item {
-    padding: 20px 0;
+    padding: 20px 24px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    margin-bottom: 30px;
+    @include breakpoint('mobile') {
+        width: 48%;
+    }
+    @include breakpoint('desktop') {
+        max-width: 277px;
+    }
     .product-span {
         display: block;
         position: relative;
@@ -62,6 +86,7 @@
             line-height: 24px;
             font-family: 'AvenirNextCyr-Bold', sans-serif;
             margin-bottom: 0;
+            margin-right: 15px;
         }
         .old-price {
             font-size: 14px;
@@ -69,6 +94,17 @@
             font-family: 'AvenirNextCyr-Bold', sans-serif;
             color: $primary;
             margin-bottom: 0;
+            position: relative;
+            &:after {
+                content: '';
+                position: absolute;
+                width: 35px;
+                height: 1px;
+                background-color: $primary;
+                top: 50%;
+                transform: translateY(-50%);
+                left: 0;
+            }
         }
     }
     .btn-styles {
@@ -81,5 +117,8 @@
 
 .img-item-styles {
     width: 270px;
-    margin-bottom: 22px;
+    margin: 0 auto 22px auto !important;
+    @include breakpoint('tablet') {
+        width: 170px;
+    }
 }
