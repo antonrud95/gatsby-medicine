@@ -15,6 +15,7 @@
   padding-left: $p-xl;
   padding-right: $p-xl;
   white-space: nowrap;
+  outline: none !important;
   cursor: pointer;
   &:hover {
     transform: scale(1.05) !important;

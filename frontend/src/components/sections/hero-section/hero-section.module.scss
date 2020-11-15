@@ -81,6 +81,7 @@
 }
 
 .form-wrapper {
+  position: relative !important;
   .search-box {
     display: flex;
     align-items: center;
@@ -140,5 +141,18 @@
     }
   }
   
+}
+
+.goods-wrapper {
+  min-width: 790px;
+  box-sizing: border-box !important;
+  margin: 0 auto;
+  position: absolute !important;
+  top: calc(100% + 20px);
+  z-index: 1000;
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 7px 7px 30px rgba(0, 0, 0, 0.08);
+  padding: 10px;
 }
 

@@ -28,7 +28,8 @@
     padding: 9px 29px;
     border-radius: 100px;
     transition: 0.3s ease-in-out;
-    max-width: 100px;
+    max-width: 100px !important;
+    box-sizing: border-box;
     &:hover {
       background-color: $primary;
       color: #fff;

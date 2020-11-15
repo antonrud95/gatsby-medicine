@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 import { Container } from 'react-bootstrap'
 import SInput from '~/components/ui/general/input/input.component'
@@ -9,7 +9,7 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import styles from './hero-section.module.scss'
 import Img from 'gatsby-image'
 
-const HeroSection = () => {
+const HeroSection = ({ items }) => {
   const data = useStaticQuery(graphql`
     query {
       firstStep: file(relativePath: { eq: "images/hero/first-step.png" }) {
@@ -49,6 +49,28 @@ const HeroSection = () => {
       }
     }
   `)
+
+  const [searchTerm, setSearchTerm] = useState('')
+  const [searchResults, setSearchResults] = useState([])
+  const [show, setShow] = useState(false)
+  const handleChange = (event) => {
+    setSearchTerm(event.target.value)
+  }
+
+  useEffect(() => {
+    const titles = items.map((item) => item.title)
+    const results = titles.filter((item) =>
+      item.toLowerCase().includes(searchTerm)
+    )
+    setSearchResults(results)
+  }, [searchTerm])
+
+  const showTrue = () => {
+    setShow(true)
+  }
+  const showFalse = () => {
+    setShow(false)
+  }
   return (
     <Container fluid className={styles.fluidContainer}>
       <Container>
@@ -67,12 +89,25 @@ const HeroSection = () => {
                 type="text"
                 placeholder="Введите название препарата"
                 styles={styles.input}
+                value={searchTerm}
+                onchange={handleChange}
               />
             </div>
 
-            <SButton variant="primary" className={styles.formBtn}>
+            <SButton
+              variant="primary"
+              className={styles.formBtn}
+              onClick={showTrue}
+            >
               Найти
             </SButton>
+            {show && (
+              <div className={styles.goodsWrapper} onMouseLeave={showFalse}>
+                {searchResults.map((item) => (
+                  <li key={item.id}>{item}</li>
+                ))}
+              </div>
+            )}
           </div>
           <div className={styles.imageWrapper}>
             <Img

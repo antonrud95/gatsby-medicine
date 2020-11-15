@@ -1,16 +1,22 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { Container, Navbar, Nav } from 'react-bootstrap'
-import { Link } from 'gatsby'
+import Link from 'gatsby-link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPhoneAlt, faShoppingBasket } from '@fortawesome/free-solid-svg-icons'
 import { useScrollPosition } from '@n8tb1t/use-scroll-position'
 import classnames from 'classnames'
+import { PageContext } from '~/contexts/data-provider.context'
 
 import Button from '~/components/ui/general/button/button.component'
 
 import styles from './navbar.module.scss'
 
 const SNavbar = () => {
+  // const value = useContext(PageContext)
+  const { cart } = useContext(PageContext)
+  // const cart = value.cart
+  console.log(cart)
+
   const [isOnTop, setOnTop] = useState(true)
   useScrollPosition(
     ({ prevPos, currPos }) => {
@@ -31,7 +37,7 @@ const SNavbar = () => {
           : styles.navbar
       }
     >
-      <Container>
+      <Container className={styles.navFlex}>
         <Link to="/" className={styles.navLinkLogo}>
           Logo
         </Link>
@@ -42,14 +48,17 @@ const SNavbar = () => {
           </Link>
         </Nav>
         <Nav className={styles.nav}>
-          <Button variant={'secondary'} className={styles.navBtn}>
-            Корзина
-            <FontAwesomeIcon
-              icon={faShoppingBasket}
-              className={styles.basketIcon}
-              size="lg"
-            />
-          </Button>
+          <Link to="/cart">
+            <Button variant={'secondary'} className={styles.navBtn}>
+              Корзина
+              <FontAwesomeIcon
+                icon={faShoppingBasket}
+                className={styles.basketIcon}
+                size="lg"
+              />
+              <span className={styles.cartSpan}>{cart.length}</span>
+            </Button>
+          </Link>
         </Nav>
       </Container>
     </Navbar>
