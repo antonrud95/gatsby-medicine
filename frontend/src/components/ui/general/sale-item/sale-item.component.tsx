@@ -6,8 +6,8 @@ import SButton from '~/components/ui/general/button/button.component'
 
 interface Props {
   itemWrapper?: string
-  image: FluidObject
-  imageStyles: string
+  image?: FluidObject
+  imageStyles?: string
   title: string
   titleStyles?: string
   contentContainer?: string
@@ -15,18 +15,19 @@ interface Props {
   containerTextStyles?: string
   containerSpan?: string
   containerDescriptionStyles?: string
-  containerDescription: string
-  containerDescriptionSecond: string
-  containerDescriptionThird: string
-  containerDescriptionFourth: string
-  price: string
+  containerDescription?: string
+  containerDescriptionSecond?: string
+  containerDescriptionThird?: string
+  containerDescriptionFourth?: string
+  price?: string
   stylesPrice?: string
-  oldPrice: string
+  oldPrice?: string
   stylesOldPrice?: string
   priceContainer?: string
   variant?: any
   btnStyles?: string
   children?: any
+  click?: any
 }
 
 const SaleItem: FC<Props> = ({
@@ -52,6 +53,7 @@ const SaleItem: FC<Props> = ({
   variant,
   btnStyles,
   children,
+  click,
 }) => {
   return (
     <div className={itemWrapper}>
@@ -89,7 +91,7 @@ const SaleItem: FC<Props> = ({
         <p className={stylesPrice}>{price}</p>
         <p className={stylesOldPrice}>{oldPrice}</p>
       </div>
-      <SButton variant={variant} className={btnStyles}>
+      <SButton variant={variant} className={btnStyles} onClick={click}>
         {children}
       </SButton>
     </div>

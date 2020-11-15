@@ -34,9 +34,15 @@
   background-color: transparent;
   padding: 1.5rem 0;
   transition: all 0.1s ease-in-out;
+  position: fixed !important;
+
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
   &__onLight {
-    background-color: white;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    background-color: white !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;
   }
 }
 .nav {
@@ -46,9 +52,29 @@
   }
 }
 
+.nav-flex {
+  display: flex !important;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .phone-icon {
   margin-right: 10px;
 }
 .basket-icon {
   margin-left: 10px;
+}
+
+.nav-btn {
+  position: relative;
+  .cart-span {
+    position: absolute;
+    right: 20px;
+    top: 0;
+    background-color: red;
+    color: #fff;
+    border-radius: 50%;
+    padding: 0 8px;
+    font-size: 12px;
+  }
 }

@@ -3,20 +3,30 @@ import { Container } from 'react-bootstrap'
 
 import SaleItem from '~/components/ui/general/sale-item/sale-item.component'
 
-import styles from './products-section.module.scss'
+import styles from './cart-section.module.scss'
 
 import { PageContext } from '~/contexts/data-provider.context'
 
-const ProductsSection = ({ sales }) => {
-  const { cart, addCart } = useContext(PageContext)
+import EmptyCartImage from '~/assets/images/cart/empty.svg'
+
+const CartSection = () => {
+  const { cart, removeCart } = useContext(PageContext)
 
   return (
-    <Container fluid>
-      <h2 className={styles.mainTitle}>Акционные товары</h2>
+    <Container fluid className={styles.cartMain}>
+      <h2 className={styles.mainTitle}>Корзина товаров</h2>
+      {cart.length === 0 && (
+        <>
+          <p className={styles.emptyTitle}>Ваша корзина пуста :(</p>
+          <div className={styles.logoEmptyWrapper}>
+            <EmptyCartImage className={styles.logoEmpty} />
+          </div>
+        </>
+      )}
       <Container className={styles.productsContainer}>
-        {sales.map((sale) => {
-          const addCartFunc = () => {
-            addCart(sale)
+        {cart.map((sale) => {
+          const removeCartFunc = () => {
+            removeCart(sale.id)
           }
           return (
             <SaleItem
@@ -30,7 +40,7 @@ const ProductsSection = ({ sales }) => {
               oldPrice={sale.oldPrice}
               image={sale.image.childImageSharp.fluid}
               imageStyles={styles.imgItemStyles}
-              children={'Добавить в корзину'}
+              children={'Убрать из корзины'}
               variant={'primary'}
               itemWrapper={styles.productItem}
               titleStyles={styles.productTitle}
@@ -43,7 +53,7 @@ const ProductsSection = ({ sales }) => {
               stylesPrice={styles.price}
               stylesOldPrice={styles.oldPrice}
               btnStyles={styles.btnStyles}
-              click={addCartFunc}
+              click={removeCartFunc}
             />
           )
         })}
@@ -52,4 +62,4 @@ const ProductsSection = ({ sales }) => {
   )
 }
 
-export default ProductsSection
+export default CartSection
