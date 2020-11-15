@@ -16,7 +16,6 @@ export const PageContext = createContext<Props>(PropsDefaultValue)
 
 export const DataProvider = ({ children }) => {
   const [cart, setCart] = useState([])
-  console.log(cart)
   const addCart = (sale) => {
     const check = cart.every((item) => {
       return item.id !== sale.id

@@ -12,10 +12,7 @@ import Button from '~/components/ui/general/button/button.component'
 import styles from './navbar.module.scss'
 
 const SNavbar = () => {
-  // const value = useContext(PageContext)
   const { cart } = useContext(PageContext)
-  // const cart = value.cart
-  console.log(cart)
 
   const [isOnTop, setOnTop] = useState(true)
   useScrollPosition(

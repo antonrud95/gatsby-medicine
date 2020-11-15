@@ -11,7 +11,6 @@ import EmptyCartImage from '~/assets/images/cart/empty.svg'
 
 const CartSection = () => {
   const { cart, removeCart } = useContext(PageContext)
-  console.log(cart)
 
   return (
     <Container fluid className={styles.cartMain}>

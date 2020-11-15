@@ -9,7 +9,6 @@ import { PageContext } from '~/contexts/data-provider.context'
 
 const ProductsSection = ({ sales }) => {
   const { cart, addCart } = useContext(PageContext)
-  console.log(cart)
 
   return (
     <Container fluid>
